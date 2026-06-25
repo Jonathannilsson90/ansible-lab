@@ -1,0 +1,33 @@
+services:
+  # ubuntu image from dockerfile.ubuntu
+  ubuntu-image:
+    container_name: "Ubuntu-container"
+    hostname: "Ubuntu"
+    build:
+      context: .
+      dockerfile: Dockerfile.ubuntu
+    restart: always
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.5
+
+
+  # fedora image from dockerfile.fedora
+  fedora-image:
+    container_name: "Fedora-container"
+    hostname: "Fedora"
+    build:
+      context: .
+      dockerfile: Dockerfile.fedora
+    restart: always
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.6
+
+networks:
+  vpcbr:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.5.0.0/16
+          gateway: 10.5.0.1
