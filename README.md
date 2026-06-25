@@ -12,7 +12,8 @@ Reasoning behind this project was to gain a basic understanding about Ansible.
 
 Activate keyagent:
 
-```bash eval $(ssh-agent)
+```bash
+ eval $(ssh-agent)
 ssh-add /root/.ssh/id_ed25519
 ```
 
